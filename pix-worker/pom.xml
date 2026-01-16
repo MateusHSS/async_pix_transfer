@@ -107,6 +107,11 @@
           <artifactId>snakeyaml</artifactId>
           <scope>runtime</scope>
       </dependency>
+      <dependency>
+          <groupId>io.micronaut.serde</groupId>
+          <artifactId>micronaut-serde-jackson</artifactId>
+          <scope>compile</scope>
+      </dependency>
   </dependencies>
   <build>
     <plugins>
@@ -156,6 +161,11 @@
               <artifactId>micronaut-http-validation</artifactId>
               <version>${micronaut.core.version}</version>
             </path>
+              <path>
+                  <groupId>io.micronaut.serde</groupId>
+                  <artifactId>micronaut-serde-processor</artifactId>
+                  <version>${micronaut.serialization.version}</version>
+              </path>
           </annotationProcessorPaths>
           <compilerArgs>
             <arg>-Amicronaut.processing.group=com.example</arg>
