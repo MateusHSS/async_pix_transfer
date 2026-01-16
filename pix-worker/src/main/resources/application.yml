@@ -1,0 +1,20 @@
+micronaut:
+  application:
+    name: pix-worker
+
+datasources:
+  default:
+    url: jdbc:postgresql://localhost:5433/pixdb
+    driverClassName: org.postgresql.Driver
+    username: admin
+    password: admin
+    dialect: POSTGRES
+
+flyway:
+  datasources:
+    default:
+      enabled: true
+
+kafka:
+  bootstrap:
+    servers: localhost:9092
