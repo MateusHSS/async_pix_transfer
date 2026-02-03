@@ -27,6 +27,7 @@ public class PixController {
         UUID idTransacao = UUID.randomUUID();
 
         TransferenciaEvent evento = new TransferenciaEvent(
+                idTransacao,
                 request.clienteId(),
                 request.valor(),
                 request.chaveDestino()
