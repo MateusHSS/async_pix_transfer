@@ -27,7 +27,7 @@ public class PixTransferenciaListener {
         }
 
         Transacao transacao = new Transacao(
-                UUID.randomUUID(),
+                evento.idTransacao(),
                 evento.clienteId(),
                 evento.valor(),
                 status,
