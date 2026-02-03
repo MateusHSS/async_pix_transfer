@@ -36,56 +36,55 @@ export function PixForm() {
 
     return (
         <Paper elevation={3} sx={{ p: 4, maxWidth: 500, mx: 'auto', mt: 4 }}>
-    <Typography variant="h5" gutterBottom color="primary" fontWeight="bold">
-        Nova Transferência Pix
-    </Typography>
+            <Typography variant="h5" gutterBottom color="primary" fontWeight="bold">
+                Nova Transferência Pix
+            </Typography>
 
-    {mutation.isError && (
-        <Alert severity="error" sx={{ mb: 2 }}>
-        Erro ao enviar. Verifique o console (Provável CORS).
-        </Alert>
-    )}
+            {mutation.isError && (
+                <Alert severity="error" sx={{ mb: 2 }}>
+                    Erro ao enviar. Verifique o console (Provável CORS).
+                </Alert>
+            )}
 
-    <Box component="form" onSubmit={handleSubmit(onSubmit)} noValidate sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+            <Box component="form" onSubmit={handleSubmit(onSubmit)} noValidate sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
 
-    {/* Campo Cliente ID */}
-    <TextField
-        label="Seu ID (Cliente)"
-    {...register('clienteId')}
-    error={!!errors.clienteId}
-    helperText={errors.clienteId?.message}
-    fullWidth
-    />
+                {/* Campo Cliente ID */}
+                <TextField label="Seu ID (Cliente)"
+                    {...register('clienteId')}
+                    error={!!errors.clienteId}
+                    helperText={errors.clienteId?.message}
+                    fullWidth
+                />
 
-    {/* Campo Chave Pix */}
-    <TextField
-    label="Chave Pix Destino"
-    {...register('chaveDestino')}
-    error={!!errors.chaveDestino}
-    helperText={errors.chaveDestino?.message}
-    fullWidth
-    />
+                {/* Campo Chave Pix */}
+                <TextField
+                    label="Chave Pix Destino"
+                    {...register('chaveDestino')}
+                    error={!!errors.chaveDestino}
+                    helperText={errors.chaveDestino?.message}
+                    fullWidth
+                />
 
-    {/* Campo Valor */}
-    <TextField
-    label="Valor (R$)"
-    type="number"
-    {...register('valor')}
-    error={!!errors.valor}
-    helperText={errors.valor?.message}
-    fullWidth
-    />
+                {/* Campo Valor */}
+                <TextField
+                    label="Valor (R$)"
+                    type="number"
+                    {...register('valor')}
+                    error={!!errors.valor}
+                    helperText={errors.valor?.message}
+                    fullWidth
+                />
 
-    {/* Botão de Enviar */}
-    <Button
-    type="submit"
-    variant="contained"
-    size="large"
-    disabled={mutation.isPending}
-        >
-        {mutation.isPending ? <CircularProgress size={24} /> : 'Transferir Agora'}
+                {/* Botão de Enviar */}
+                <Button
+                    type="submit"
+                    variant="contained"
+                    size="large"
+                    disabled={mutation.isPending}
+                >
+                    {mutation.isPending ? <CircularProgress size={24} /> : 'Transferir Agora'}
                 </Button>
-                </Box>
-                </Paper>
+            </Box>
+    </Paper>
 );
 }
