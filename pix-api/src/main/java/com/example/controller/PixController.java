@@ -44,7 +44,7 @@ public class PixController {
         return HttpResponse.accepted().body(response);
     }
 
-    @Get("/{id}")
+    @Get("/status/{id}")
     public HttpResponse<Transacao> consultarStatus(@PathVariable UUID id) {
         return repository.findById(id)
                 .map(transacao -> HttpResponse.ok(transacao))
