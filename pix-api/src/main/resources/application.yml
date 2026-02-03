@@ -29,3 +29,11 @@ kafka:
     default: # Configurações padrão para quem envia mensagens
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: io.micronaut.configuration.kafka.serde.JsonSerde # Serializa objetos em JSON automático
+
+datasources:
+  default:
+    url: jdbc:postgresql://localhost:5433/pixdb # Mesma URL do Worker
+    username: admin
+    password: admin
+    driverClassName: org.postgresql.Driver
+    dialect: POSTGRES
