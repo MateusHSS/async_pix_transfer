@@ -1,0 +1,11 @@
+micronaut:
+  application:
+    name: pix-api
+
+kafka:
+  bootstrap:
+    servers: localhost:9092
+  producers:
+    default: # Configurações padrão para quem envia mensagens
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: io.micronaut.configuration.kafka.serde.JsonSerde # Serializa objetos em JSON automático
