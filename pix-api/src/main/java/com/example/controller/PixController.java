@@ -2,9 +2,9 @@ package com.example.controller;
 
 import com.example.client.PixProducerClient;
 import com.example.domain.Transacao;
-import com.example.dto.TransferenciaEvent;
-import com.example.dto.TransferenciaRequest;
-import com.example.dto.TransferenciaResponse;
+import com.example.dto.transferencias.TransferenciaEvent;
+import com.example.dto.transferencias.TransferenciaRequest;
+import com.example.dto.transferencias.TransferenciaResponse;
 import com.example.repository.TransacaoRepository;
 import io.micronaut.http.HttpResponse;
 import io.micronaut.http.annotation.*;
