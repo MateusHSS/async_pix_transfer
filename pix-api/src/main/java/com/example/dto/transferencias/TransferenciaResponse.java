@@ -1,4 +1,4 @@
-package com.example.dto;
+package com.example.dto.transferencias;
 
 import io.micronaut.serde.annotation.Serdeable;
 import java.util.UUID;

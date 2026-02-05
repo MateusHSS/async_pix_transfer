@@ -1,4 +1,4 @@
-package com.example.domain;
+package com.example.pix.domain;
 
 import io.micronaut.data.annotation.Id;
 import io.micronaut.data.annotation.MappedEntity;

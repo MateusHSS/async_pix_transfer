@@ -1,15 +1,14 @@
-package com.example.listener;
+package com.example.pix.listener;
 
-import com.example.domain.Transacao;
-import com.example.domain.TransferenciaEvent;
-import com.example.repository.TransacaoRepository;
+import com.example.pix.domain.Transacao;
+import com.example.pix.domain.TransferenciaEvent;
+import com.example.pix.repository.TransacaoRepository;
 import io.micronaut.configuration.kafka.annotation.KafkaListener;
 import io.micronaut.configuration.kafka.annotation.Topic;
 import jakarta.inject.Inject;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.UUID;
 
 @KafkaListener(groupId = "pix-worker-group")
 public class PixTransferenciaListener {

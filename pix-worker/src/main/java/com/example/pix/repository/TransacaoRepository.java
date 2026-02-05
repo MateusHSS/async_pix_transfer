@@ -1,6 +1,6 @@
-package com.example.repository;
+package com.example.pix.repository;
 
-import com.example.domain.Transacao;
+import com.example.pix.domain.Transacao;
 import io.micronaut.data.jdbc.annotation.JdbcRepository;
 import io.micronaut.data.model.query.builder.sql.Dialect;
 import io.micronaut.data.repository.CrudRepository;
