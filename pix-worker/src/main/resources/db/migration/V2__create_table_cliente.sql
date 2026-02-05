@@ -1,0 +1,8 @@
+CREATE TABLE cliente (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    nome VARCHAR(255) NOT NULL,
+    cpf VARCHAR(14) NOT NULL UNIQUE,
+    email VARCHAR(255) NOT NULL,
+    telefone VARCHAR(20),
+    data_cadastro TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
