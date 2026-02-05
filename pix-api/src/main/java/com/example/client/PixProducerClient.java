@@ -1,6 +1,6 @@
 package com.example.client;
 
-import com.example.dto.TransferenciaEvent;
+import com.example.dto.transferencias.TransferenciaEvent;
 import io.micronaut.configuration.kafka.annotation.KafkaClient;
 import io.micronaut.configuration.kafka.annotation.Topic;
 
