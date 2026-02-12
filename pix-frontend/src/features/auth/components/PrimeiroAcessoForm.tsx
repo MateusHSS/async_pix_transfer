@@ -33,9 +33,8 @@ interface PrimeiroAcessoFormProps {
 export function PrimeiroAcessoForm({ onSuccess }: PrimeiroAcessoFormProps) {
     const [loading, setLoading] = useState(false);
     const [clienteId, setClienteId] = useState<number | null>(null);
-    const [mensagem, setMensagem] = useState<string | null>(null); // apenas para sucessos/infos positivas
 
-    const { control, handleSubmit: handleBuscar, formState: { errors: errosBuscar } , register, setError, clearErrors } = useForm<BuscarCpfForm>({
+    const { control, handleSubmit: handleBuscar, formState: { errors: errosBuscar }, setError, clearErrors } = useForm<BuscarCpfForm>({
         resolver: zodResolver(buscarCpfSchema),
         mode: 'onBlur'
     });
@@ -81,10 +80,8 @@ export function PrimeiroAcessoForm({ onSuccess }: PrimeiroAcessoFormProps) {
         clearErrorsSenha(['senha', 'confirmarSenha']);
         if (!clienteId) return;
         setLoading(true);
-        setMensagem(null);
         try {
             await api.post(`/auth/definir-senha`, { clienteId, senha: data.senha });
-            setMensagem('Senha definida com sucesso! Você já pode fazer login.');
             setClienteId(null);
             resetSenha();
             onSuccess?.();
