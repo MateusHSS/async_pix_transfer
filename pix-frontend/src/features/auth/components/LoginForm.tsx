@@ -1,10 +1,15 @@
-import {Box, Button, Grid, Paper, TextField, Typography} from "@mui/material";
+import {Box, Button, Grid, Paper, TextField, Typography, Link} from "@mui/material";
 import {useForm} from "react-hook-form";
 import {type LoginForm, loginSchema} from "../services/schema.ts";
 import {zodResolver} from "@hookform/resolvers/zod";
 import { CPFInput } from '../../../lib/components/inputs/CPFInput';
 
-export function LoginForm() {
+interface LoginFormProps {
+    onShowPrimeiroAcesso?: () => void;
+    onShowCadastro?: () => void;
+}
+
+export function LoginForm({ onShowPrimeiroAcesso, onShowCadastro }: LoginFormProps) {
     const {
         register,
         control,
@@ -46,6 +51,17 @@ export function LoginForm() {
                             helperText={errors.senha?.message}
                         />
                     </Grid>
+
+                    <Grid item container xs={6} sm={12} sx={{ justifyContent: "space-between" }}>
+                        <Link href="#" underline="hover" variant="body2" onClick={(e) => { e.preventDefault(); onShowCadastro?.(); }}>
+                            Cadastre-se
+                        </Link>
+
+                        <Link href="#" underline="hover" variant="body2" onClick={(e) => { e.preventDefault(); onShowPrimeiroAcesso?.(); }}>
+                            Primeiro acesso
+                        </Link>
+                    </Grid>
+
 
                     <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'center' }}>
                         <Button
