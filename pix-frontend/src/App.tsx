@@ -1,7 +1,7 @@
 import { Container, Box } from '@mui/material';
 import { useState } from 'react';
-import { Navigation } from './components/Navigation';
-import { PixForm } from './features/transferencias/components/PixForm';
+import { Navigation } from './features/navigation/Navigation.tsx';
+import { PixForm } from './features/transferencias/components/PixForm.tsx';
 import { CadastroClienteForm } from "./features/cliente/components/CadastroClienteForm.tsx";
 
 type MenuOption = 'cadastro' | 'transferencia';
