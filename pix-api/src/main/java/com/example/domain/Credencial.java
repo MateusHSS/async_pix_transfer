@@ -16,7 +16,12 @@ public class Credencial {
     private UUID id;
     private UUID cliente_id;
     private String senha_hash;
-    private boolean ativo;
+    private boolean ativo = true;
+
+    public Credencial(UUID cliente_id, String senha_hash) {
+        this.cliente_id = cliente_id;
+        this.senha_hash = senha_hash;
+    }
 
     public UUID getId() {
         return id;
