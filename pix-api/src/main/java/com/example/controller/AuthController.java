@@ -63,6 +63,13 @@ public class AuthController {
         }
 
         Cliente cliente = clienteOpt.get();
+
+        Optional<Credencial> credencialOpt = credencialRepository.findBycliente_id(cliente.getId());
+
+        if(credencialOpt.isPresent()) {
+            return HttpResponse.badRequest(Map.of("mensagem", "Senha já definida para este cliente"));
+        }
+
         String hash = BCrypt.hashpw(request.senha(), BCrypt.gensalt());
 
         Credencial credencial = new Credencial(cliente.getId(), hash);
