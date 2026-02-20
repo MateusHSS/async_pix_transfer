@@ -10,6 +10,7 @@ import ErrorIcon from '@mui/icons-material/Error';
 import { api } from '../../../lib/api';
 import { transferenciaSchema, type TransferenciaForm } from '../services/schema';
 import { useStatusTransferencia } from '../hooks/useStatusTransferencia';
+import {formatarConta} from "../../../lib/accountValidation.ts";
 
 export function PixForm() {
     // Estado para guardar o ID da transação criada
@@ -18,8 +19,9 @@ export function PixForm() {
     // Hook do Polling (Fica observando esse ID)
     const { data: statusAtual } = useStatusTransferencia(idTransacao);
 
-    const { register, handleSubmit, formState: { errors }, reset } = useForm<TransferenciaForm>({
+    const { register, handleSubmit, setValue, formState: { errors }, reset } = useForm<TransferenciaForm>({
         resolver: zodResolver(transferenciaSchema),
+        mode: 'onBlur'
     });
 
     const mutation = useMutation({
@@ -91,11 +93,17 @@ export function PixForm() {
                     fullWidth
                 />
                 <TextField
-                    label="Chave Pix Destino"
+                    label="Conta de Destino (com dígito)"
+                    placeholder="Ex: 123456-7"
                     {...register('chaveDestino')}
+                    onChange={(e) => {
+                        const formatado = formatarConta(e.target.value);
+                        setValue('chaveDestino', formatado);
+                    }}
                     error={!!errors.chaveDestino}
                     helperText={errors.chaveDestino?.message}
                     fullWidth
+                    inputProps={{ maxLength: 10 }} // Limita tamanho para não quebrar layout
                 />
                 <TextField
                     label="Valor (R$)"

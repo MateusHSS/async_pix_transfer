@@ -1,22 +1,23 @@
 import {Typography, TextField, Box, Button, Paper, Grid} from "@mui/material";
-import {formatarCPF} from "../../../lib/cpfValidator.ts";
 import {useForm} from "react-hook-form";
 import {zodResolver} from "@hookform/resolvers/zod";
 import {clienteSchema, type ClientForm} from "../services/schema.ts";
 import {formatarTelefone} from "../../../lib/telefoneFormatter.ts";
+import { CPFInput } from '../../../lib/components/inputs/CPFInput';
 
 export function CadastroClienteForm() {
     const {
         register,
         handleSubmit,
         setValue,
+        control,
         formState: { errors }
-    } = useForm<ClienteForm>({
+    } = useForm<ClientForm>({
         resolver: zodResolver(clienteSchema),
         mode: 'onBlur' // Valida quando o usuário sai do campo (melhor UX para CPF)
     });
 
-    const onSubmit = (data: ClienteForm) => {
+    const onSubmit = (data: ClientForm) => {
         // Aqui você vai chamar sua API depois
         console.log("Dados Validados:", data);
         // Remove pontuação antes de enviar pro Back (opcional, mas recomendado)
@@ -45,18 +46,11 @@ export function CadastroClienteForm() {
                     </Grid>
 
                     <Grid item xs={12} sm={6}>
-                        <TextField
-                            label="CPF"
-                            fullWidth
-                            {...register('cpf')}
-                            onChange={(e) => {
-                                // Aplica a máscara e atualiza o React Hook Form
-                                const formatted = formatarCPF(e.target.value);
-                                setValue('cpf', formatted);
-                            }}
+                        <CPFInput
+                            name="cpf"
+                            control={control}
                             error={!!errors.cpf}
                             helperText={errors.cpf?.message}
-                            inputProps={{ maxLength: 14 }} // 11 números + 3 símbolos
                         />
                     </Grid>
 
